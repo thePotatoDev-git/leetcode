@@ -41,3 +41,10 @@ var differenceOfSum = function(nums) {
   
     return nums.reduce((total, num) => total += num) - digitsNum.reduce((total, num) => total+= num)
 };
+
+var differenceOfSumRefactor = function(nums) {
+    
+    const digits = nums.join('').split('').map(num => Number(num));
+
+    return nums.reduce((total, num) => total += num) - digits.reduce((total, num) => total += num);
+};
