@@ -31,29 +31,50 @@
 
 // *Solution is not yet optimized
 
+// var zeroFilledSubarray = function(nums) {
+//     // If nums contains no zeros, return 0
+//     // Make a variable named subarrays = 0
+//     // Loop through nums using forEach
+//     // If an element is 0, add +1 to subarrays
+//     // If the element index + 1 is 0, add +1 to subarrays and continue adding +1 to subarrays if the next element is 0
+//     // If the next element is not 0, break the loop
+
+//     if (!nums.includes(0)) {
+//       return 0;
+//     }
+
+//     let subarrays = 0;
+
+//     nums.forEach((num, index) => {
+//       for (let i = 0; i < nums.length; i++) {
+//         if (nums[index + i] === 0) {
+//           subarrays++
+//         } else {
+//           break;
+//         }
+//       }
+//     })
+
+//     return subarrays;
+// };
+
+// **Optimized Solution**
+
 var zeroFilledSubarray = function(nums) {
-    // If nums contains no zeros, return 0
-    // Make a variable named subarrays = 0
-    // Loop through nums using forEach
-    // If an element is 0, add +1 to subarrays
-    // If the element index + 1 is 0, add +1 to subarrays and continue adding +1 to subarrays if the next element is 0
-    // If the next element is not 0, break the loop
+  // Make an empty 0 'count' variable
+  // Make an empty 0 'subarrays' variable
+  // Make a loop to iterate through nums
+  // If an element is 0, add 1 to count. Then add count to subarrays
+  // If an element is !0, reset count to 0
+  // Return subarrays
 
-    if (!nums.includes(0)) {
-      return 0;
-    }
+  let count = 0;
+  let subarrays = 0;
 
-    let subarrays = 0;
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] === 0 ? count++ : count = 0;
+    subarrays += count;
+  }
 
-    nums.forEach((num, index) => {
-      for (let i = 0; i < nums.length; i++) {
-        if (nums[index + i] === 0) {
-          subarrays++
-        } else {
-          break;
-        }
-      }
-    })
-
-    return subarrays;
-};
+  return subarrays;
+}
